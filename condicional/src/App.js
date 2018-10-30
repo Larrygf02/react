@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import ComponentWillUnMount from './sections/WillUnMount';
+import ExampleComponentDidCatch from './sections/DidCatch.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ComponentWillUnMount></ComponentWillUnMount>
+        <ExampleComponentDidCatch></ExampleComponentDidCatch>
       </div>
     )
   }
