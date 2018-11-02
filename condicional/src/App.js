@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import ExampleComponentDidCatch from './sections/DidCatch.js';
+//import ExampleComponentDidCatch from './sections/DidCatch.js';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <ExampleComponentDidCatch></ExampleComponentDidCatch>
+        <h4>Hola</h4>
       </div>
     )
   }
