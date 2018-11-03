@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-//componentes
-import { Title } from './components/Title'
-import { SearchForm } from './components/SearchForm'
-import { MoviesList } from './components/MovieList'
+import { Switch, Route } from 'react-router-dom'
+import { Detail } from './pages/Details'
+import { Home } from './pages/Home'
 import './App.css';
 
 //importando Bulma
@@ -10,24 +9,19 @@ import 'bulma/css/bulma.css'
 
 
 class App extends Component {
-  state = { usedSearch: false, results: [] }
-  _handleResults = (results) => {
-    this.setState({ results, usedSearch: true })
-  }
-  _renderResults () {
-    return this.state.results.length === 0 
-    ? <p>Sin resultados</p> 
-    : <MoviesList movies={this.state.results}></MoviesList>
-  }
+
 
   render() {
+    //const url = new URL(document.location)
+    //const Page = url.searchParams.has('id') 
+              //? <Detail id={url.searchParams.get('id')}/>
+              //: <Home/>
     return (
       <div className="App">
-        <Title>Search movies</Title>
-        <div className="searchForm-wrapper">
-          <SearchForm onResults={this._handleResults}/>
-        </div>
-        {this.state.usedSearch ? this._renderResults(): <small>Use el formulario para buscar una pelicula</small>}
+        <Switch>
+          <Route exact path='/' component={Home}></Route>
+          <Route path='/detail/:id' component={Detail}></Route>
+        </Switch>
       </div>
     );
   }
