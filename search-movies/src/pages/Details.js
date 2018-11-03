@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
+import { ButtonBackHome } from '../components/ButtonBackHome'
 const API_KEY = '7ac36717'
 export class Detail extends Component {
     static propTypes = {
-        id: PropTypes.string
+        //id: PropTypes.string
+        match: PropTypes.shape({
+            params: PropTypes.object,
+            isExact: PropTypes.bool,
+            path: PropTypes.string,
+            url: PropTypes.string
+        })
     }
 
     state = { movie: {} }
@@ -15,18 +23,15 @@ export class Detail extends Component {
             this.setState({movie})
         })
     }
-    _goBack () {
-        window.history.back()
-    }
     componentDidMount () {
-        const { id } = this.props
+        const { id } = this.props.match.params
         this._fetchMovie({ id })
     }
     render(){
         const { Title, Poster, Actors, Metascore, Plot } = this.state.movie
         return(
             <div>
-                <button className="button is-info" onClick={this._goBack}>Volver</button>
+                <ButtonBackHome/>
                 <h1>{Title}</h1>
                 <img alt={Poster} src={Poster}/>
                 <h3>{Actors}</h3>

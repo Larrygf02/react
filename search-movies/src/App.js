@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom'
 import { Detail } from './pages/Details'
 import { Home } from './pages/Home'
+import { NotFound } from './pages/NotFound'
 import './App.css';
 
 //importando Bulma
@@ -21,6 +22,7 @@ class App extends Component {
         <Switch>
           <Route exact path='/' component={Home}></Route>
           <Route path='/detail/:id' component={Detail}></Route>
+          <Route component={NotFound}></Route>
         </Switch>
       </div>
     );
